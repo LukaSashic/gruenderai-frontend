@@ -264,7 +264,7 @@
 
     <script>
         // Configuration
-        const API_BASE_URL = 'https://web-production-fc884.up.railway.app'; // Update this after deploying backend
+        const API_BASE_URL = 'https://web-production-407de.up.railway.app'; // Update this after deploying backend
         
         // State
         let sessionId = null;
@@ -361,7 +361,7 @@
                 nextBtn.disabled = true;
                 nextBtn.textContent = 'Laden...';
                 
-                const response = await fetch(`${API_BASE_URL}/assessment/answer`, {
+                const response = await fetch(`${API_BASE_URL}/api/assessment/answer`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -411,7 +411,7 @@
         // Get results and redirect
         async function getResults() {
             try {
-                const response = await fetch(`${API_BASE_URL}/assessment/results`, {
+                const response = await fetch(`${API_BASE_URL}/api/assessment/results`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
