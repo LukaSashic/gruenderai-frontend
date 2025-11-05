@@ -3,726 +3,448 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ihre Ergebnisse - GründerAI</title>
+    <title>GründerAI - Ihre Ergebnisse</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --success-color: #16a34a;
-            --warning-color: #ea580c;
-            --danger-color: #dc2626;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
-            --bg-white: #ffffff;
-            --border-color: #e5e7eb;
-        }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #eff6ff 0%, #f9fafb 100%);
-            line-height: 1.6;
-            color: var(--text-dark);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 20px;
         }
-        
+
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
         }
-        
-        /* Header */
-        header {
-            background: var(--bg-white);
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-            margin-bottom: 40px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-align: center;
-        }
-        
-        /* Hero Score Card - Business Fitness Gauge */
-        .hero-score {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: #fff;
-            padding: 50px 40px;
+
+        .header {
+            background: white;
             border-radius: 20px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-score::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.3; }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .score-label {
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.9;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        /* Semi-circular Gauge */
-        .gauge-container {
-            width: 280px;
-            height: 140px;
-            margin: 0 auto 30px;
-            position: relative;
-        }
-        
-        .gauge-svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .gauge-background {
-            stroke: rgba(255, 255, 255, 0.2);
-            fill: none;
-            stroke-width: 20;
-        }
-        
-        .gauge-progress {
-            stroke: #fff;
-            fill: none;
-            stroke-width: 20;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 2s ease-out;
-        }
-        
-        .score-value {
-            font-size: 72px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .readiness-level {
-            font-size: 24px;
-            font-weight: 600;
-            opacity: 0.95;
-        }
-        
-        .probability-indicator {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 12px 24px;
-            border-radius: 50px;
-            margin-top: 20px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        
-        /* Section Headers */
-        .section {
-            background: var(--bg-white);
             padding: 40px;
-            border-radius: 16px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+
+        .logo {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .completion-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .results-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
             margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
-        
-        .section-icon {
-            font-size: 28px;
-        }
-        
+
         .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-        
-        /* Personality Radar Chart Section */
-        .radar-container {
-            width: 100%;
-            max-width: 500px;
-            height: 400px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        /* Dimensions Grid */
-        .dimensions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            font-size: 1.8em;
+            color: #333;
             margin-bottom: 30px;
+            text-align: center;
         }
-        
+
         .dimension-card {
-            padding: 24px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .dimension-card:hover {
-            border-color: var(--primary-color);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
         }
-        
+
         .dimension-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
+            align-items: center;
+            margin-bottom: 15px;
         }
-        
+
         .dimension-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-dark);
-            flex: 1;
-            line-height: 1.3;
-        }
-        
-        .dimension-score {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin-left: 12px;
-        }
-        
-        .dimension-level {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
+            font-size: 1.3em;
             font-weight: 600;
-            margin-bottom: 12px;
+            color: #333;
         }
-        
-        .level-high {
-            background: #dcfce7;
-            color: #166534;
+
+        .dimension-label {
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
         }
-        
-        .level-medium {
-            background: #fef3c7;
-            color: #92400e;
-        }
-        
-        .level-low {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        
-        /* Progress Bar for Each Dimension */
-        .dimension-progress {
-            width: 100%;
-            height: 8px;
-            background: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-        
-        .dimension-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), #60a5fa);
-            border-radius: 4px;
-            transition: width 1.5s ease-out;
-        }
-        
-        .dimension-interpretation {
-            font-size: 14px;
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-        
-        /* Recommendations */
-        .recommendations-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .recommendation-item {
-            padding: 20px;
-            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
-            border-left: 4px solid var(--primary-color);
-            margin-bottom: 16px;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            transition: all 0.2s;
-        }
-        
-        .recommendation-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
-        }
-        
-        .recommendation-icon {
-            flex-shrink: 0;
-            width: 32px;
-            height: 32px;
-            background: var(--primary-color);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .dimension-score {
+            font-size: 2em;
             font-weight: 700;
-            font-size: 18px;
+            color: #667eea;
         }
-        
-        .recommendation-text {
-            flex: 1;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-        
-        /* Next Steps */
-        .steps-list {
-            list-style: none;
-            padding: 0;
-            counter-reset: step-counter;
-        }
-        
-        .step-item {
-            padding: 20px 20px 20px 70px;
-            position: relative;
-            margin-bottom: 16px;
-            background: var(--bg-light);
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-        
-        .step-item:hover {
-            background: #e0f2fe;
-            transform: translateX(4px);
-        }
-        
-        .step-item::before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary-color), #60a5fa);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 16px;
-            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: #fff;
-            padding: 50px 40px;
-            border-radius: 16px;
-            text-align: center;
-            margin-top: 40px;
-            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.3);
-        }
-        
-        .cta-section h3 {
-            font-size: 28px;
-            margin-bottom: 16px;
-        }
-        
-        .cta-section p {
-            font-size: 16px;
-            margin-bottom: 30px;
-            opacity: 0.95;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn {
+
+        .score-interpretation {
             display: inline-block;
-            padding: 16px 36px;
-            border-radius: 10px;
-            font-size: 16px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .interpretation-sehr-hoch {
+            background: #10b981;
+            color: white;
+        }
+
+        .interpretation-hoch {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .interpretation-mittel {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .interpretation-niedrig {
+            background: #ef4444;
+            color: white;
+        }
+
+        .interpretation-sehr-niedrig {
+            background: #991b1b;
+            color: white;
+        }
+
+        .progress-bar-container {
+            background: #e5e7eb;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+        }
+
+        .progress-bar-text {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .dimension-description {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .summary-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .summary-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .summary-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
             font-weight: 600;
             cursor: pointer;
             border: none;
+            transition: all 0.3s ease;
             text-decoration: none;
-            transition: all 0.2s;
+            display: inline-block;
         }
-        
-        .btn-white {
-            background: #fff;
-            color: var(--primary-color);
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
         }
-        
-        .btn-white:hover {
+
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
-        /* Loading State */
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
         .loading {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px;
+            color: white;
+            font-size: 1.3em;
         }
-        
-        .spinner {
-            border: 5px solid #e5e7eb;
-            border-top: 5px solid var(--primary-color);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 24px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .hidden {
-            display: none !important;
-        }
-        
-        /* Insights Box */
-        .insights-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 30px;
-        }
-        
-        .insights-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        
-        .insights-icon {
-            font-size: 28px;
-        }
-        
-        .insights-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #92400e;
-        }
-        
-        .insights-text {
-            font-size: 15px;
-            color: #78350f;
-            line-height: 1.6;
-        }
-        
-        /* Responsive */
+
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
+            .header {
+                padding: 30px 20px;
             }
-            
-            .hero-score {
-                padding: 40px 25px;
+
+            h1 {
+                font-size: 1.8em;
             }
-            
-            .score-value {
-                font-size: 56px;
-            }
-            
-            .section {
+
+            .results-section {
                 padding: 25px 20px;
             }
-            
-            .dimensions-grid {
-                grid-template-columns: 1fr;
+
+            .dimension-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            
-            .gauge-container {
-                width: 240px;
-                height: 120px;
+
+            .dimension-score {
+                margin-top: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">🚀 GründerAI - Ihre Ergebnisse</div>
-    </header>
-
-    <!-- Main Content -->
     <div class="container">
-        <!-- Loading -->
-        <div id="loading" class="loading">
-            <div class="spinner"></div>
-            <p style="color: var(--text-light); font-size: 16px;">Ihre Ergebnisse werden analysiert...</p>
+        <div class="header">
+            <div class="logo">🚀</div>
+            <h1>GründerAI - Ihre Ergebnisse</h1>
+            <p class="subtitle">Howard 7-Dimensionen Entrepreneurial Personality Assessment</p>
+            <div class="completion-badge">✓ Assessment abgeschlossen</div>
         </div>
 
-        <!-- Results Container -->
-        <div id="results-container" class="hidden">
-            <!-- Hero Score - Business Fitness Gauge -->
-            <div class="hero-score">
-                <div class="hero-content">
-                    <div class="score-label">Ihre Gründungs-Bereitschaft</div>
-                    
-                    <!-- Semi-circular Gauge -->
-                    <div class="gauge-container">
-                        <svg class="gauge-svg" viewBox="0 0 200 100">
-                            <!-- Background arc -->
-                            <path class="gauge-background"
-                                  d="M 20 90 A 80 80 0 0 1 180 90"
-                                  stroke-linecap="round"/>
-                            <!-- Progress arc -->
-                            <path class="gauge-progress" id="gauge-arc"
-                                  d="M 20 90 A 80 80 0 0 1 180 90"
-                                  stroke-linecap="round"
-                                  stroke-dasharray="251.2"
-                                  stroke-dashoffset="251.2"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="score-value" id="overall-score">--</div>
-                    <div class="readiness-level" id="readiness-level">--</div>
-                    <div class="probability-indicator">
-                        🎯 Gründungszuschuss-Bewilligungschance: <span id="approval-probability">--</span>%
-                    </div>
-                </div>
+        <div id="loading" class="loading">
+            Ihre Ergebnisse werden geladen...
+        </div>
+
+        <div id="results-content" style="display: none;">
+            <div class="summary-section">
+                <h2 class="summary-title">Ihre Gründerpersönlichkeit</h2>
+                <p class="summary-text" id="summary-text">
+                    Ihr Assessment ist abgeschlossen! Die Ergebnisse zeigen Ihr unternehmerisches Profil über 7 wissenschaftlich validierte Dimensionen.
+                </p>
             </div>
 
-            <!-- Dimensions Analysis -->
-            <div class="section">
-                <div class="section-header">
-                    <span class="section-icon">📊</span>
-                    <h2 class="section-title">Detailanalyse der 5 Dimensionen</h2>
-                </div>
-                <div class="dimensions-grid" id="dimensions-container"></div>
-                
-                <!-- Key Insights Box -->
-                <div class="insights-box">
-                    <div class="insights-header">
-                        <span class="insights-icon">💡</span>
-                        <h3 class="insights-title">Wichtigste Erkenntnisse</h3>
-                    </div>
-                    <p class="insights-text" id="key-insights"></p>
-                </div>
+            <div class="results-section">
+                <h2 class="section-title">📊 Detailanalyse der 7 Dimensionen</h2>
+                <div id="dimensions-container"></div>
             </div>
 
-            <!-- Recommendations -->
-            <div class="section">
-                <div class="section-header">
-                    <span class="section-icon">✨</span>
-                    <h2 class="section-title">Personalisierte Empfehlungen</h2>
+            <div class="results-section">
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-primary">Neues Assessment starten</a>
+                    <button class="btn btn-secondary" onclick="window.print()">📄 Ergebnisse drucken</button>
                 </div>
-                <ul class="recommendations-list" id="recommendations-container"></ul>
-            </div>
-
-            <!-- Next Steps -->
-            <div class="section">
-                <div class="section-header">
-                    <span class="section-icon">🎯</span>
-                    <h2 class="section-title">Ihre nächsten Schritte</h2>
-                </div>
-                <ul class="steps-list" id="steps-container"></ul>
-            </div>
-
-            <!-- CTA -->
-            <div class="cta-section">
-                <h3>Bereit für Ihren maßgeschneiderten Businessplan?</h3>
-                <p>Basierend auf Ihrer Persönlichkeit und Ihren Stärken erstellen wir einen optimierten Businessplan für den Gründungszuschuss.</p>
-                <a href="mailto:info@gruenderai.com?subject=Businessplan Anfrage" class="btn btn-white">
-                    Businessplan anfragen →
-                </a>
             </div>
         </div>
     </div>
 
     <script>
-        // Animate gauge
-        function animateGauge(score) {
-            const arc = document.getElementById('gauge-arc');
-            const circumference = 251.2;
-            const offset = circumference - (score / 100) * circumference;
-            
-            setTimeout(() => {
-                arc.style.strokeDashoffset = offset;
-            }, 100);
-        }
-        
-        // Animate dimension progress bars
-        function animateDimensionBars() {
-            const bars = document.querySelectorAll('.dimension-progress-fill');
-            bars.forEach((bar, index) => {
-                setTimeout(() => {
-                    bar.style.width = bar.dataset.width;
-                }, 200 + (index * 100));
-            });
-        }
-        
-        // Generate key insights
-        function generateKeyInsights(dimensions, overallScore) {
-            const strongDimensions = [];
-            const weakDimensions = [];
-            
-            for (const [dim, data] of Object.entries(dimensions)) {
-                if (data.score >= 75) strongDimensions.push(dim);
-                if (data.score < 60) weakDimensions.push(dim);
+        const dimensionInfo = {
+            innovativeness: {
+                name: 'Innovativeness',
+                nameDe: 'Innovationsfähigkeit',
+                description: 'Ihre Fähigkeit, neue Ideen zu entwickeln und innovative Lösungsansätze zu finden. Diese Dimension zeigt, wie gut Sie etablierte Muster durchbrechen und kreative Wege gehen können.'
+            },
+            risk_taking: {
+                name: 'Risk Taking',
+                nameDe: 'Risikobereitschaft',
+                description: 'Ihre Bereitschaft, kalkulierte Risiken einzugehen. Erfolgreiche Gründer balancieren Risikobereitschaft mit strategischem Denken.'
+            },
+            achievement_orientation: {
+                name: 'Achievement Orientation',
+                nameDe: 'Leistungsorientierung',
+                description: 'Ihr Antrieb, Ziele zu erreichen und Erfolge zu erzielen. Diese Dimension zeigt Ihre Motivation, kontinuierlich bessere Ergebnisse zu erzielen.'
+            },
+            autonomy_orientation: {
+                name: 'Autonomy Orientation',
+                nameDe: 'Autonomieorientierung',
+                description: 'Ihr Bedürfnis nach Unabhängigkeit und Selbstbestimmung. Diese Dimension zeigt, wie wichtig es Ihnen ist, eigene Entscheidungen zu treffen.'
+            },
+            proactiveness: {
+                name: 'Proactiveness',
+                nameDe: 'Proaktivität',
+                description: 'Ihre Fähigkeit, Chancen zu erkennen und Initiative zu ergreifen. Proaktive Gründer gestalten aktiv ihre Zukunft, statt zu reagieren.'
+            },
+            locus_of_control: {
+                name: 'Locus of Control',
+                nameDe: 'Kontrollüberzeugung',
+                description: 'Ihr Glaube daran, dass Sie Kontrolle über Ihr Leben und Ihre Ergebnisse haben. Diese Dimension zeigt, ob Sie sich als Gestalter Ihrer Zukunft sehen.'
+            },
+            self_efficacy: {
+                name: 'Self-Efficacy',
+                nameDe: 'Selbstwirksamkeit',
+                description: 'Ihr Vertrauen in Ihre eigenen Fähigkeiten, Herausforderungen zu meistern. Hohe Selbstwirksamkeit ist ein starker Prädiktor für Gründungserfolg.'
             }
-            
-            let insights = '';
-            if (strongDimensions.length > 0) {
-                insights += `Ihre Stärken liegen in: ${strongDimensions.join(', ')}. `;
-            }
-            if (weakDimensions.length > 0) {
-                insights += `Optimierungspotenzial besteht in: ${weakDimensions.join(', ')}. `;
-            }
-            insights += `Mit einem Gesamtscore von ${overallScore.toFixed(1)} haben Sie ${overallScore >= 75 ? 'ausgezeichnete' : overallScore >= 55 ? 'gute' : 'ausbaufähige'} Voraussetzungen für den Gründungszuschuss.`;
-            
-            return insights;
+        };
+
+        function getInterpretationClass(interpretation) {
+            const normalized = interpretation.toLowerCase().replace(/\s+/g, '-');
+            return `interpretation-${normalized}`;
         }
-        
-        // Display results
-        function displayResults() {
+
+        function loadResults() {
             try {
-                const resultsData = sessionStorage.getItem('assessmentResults');
+                const resultsJson = sessionStorage.getItem('assessmentResults');
                 
-                if (!resultsData) {
-                    alert('Keine Ergebnisse gefunden. Bitte führen Sie das Assessment zuerst durch.');
+                if (!resultsJson) {
+                    alert('Keine Ergebnisse gefunden. Bitte starten Sie ein neues Assessment.');
                     window.location.href = 'assessment.html';
                     return;
                 }
+
+                const results = JSON.parse(resultsJson);
                 
-                const results = JSON.parse(resultsData);
-                
-                // Hide loading
-                document.getElementById('loading').classList.add('hidden');
-                document.getElementById('results-container').classList.remove('hidden');
-                
-                // Display overall score
-                const overallScore = results.overall_score;
-                document.getElementById('overall-score').textContent = overallScore.toFixed(1);
-                document.getElementById('readiness-level').textContent = results.readiness_level;
-                
-                // Calculate and display approval probability (simplified formula)
-                const approvalProbability = Math.min(95, Math.max(15, overallScore * 0.9 + 10));
-                document.getElementById('approval-probability').textContent = approvalProbability.toFixed(0);
-                
-                // Animate gauge
-                animateGauge(overallScore);
-                
-                // Display dimensions
-                const dimensionsContainer = document.getElementById('dimensions-container');
-                dimensionsContainer.innerHTML = '';
-                
-                for (const [dimName, dimData] of Object.entries(results.dimensions)) {
-                    const card = document.createElement('div');
-                    card.className = 'dimension-card';
-                    
-                    const levelClass = dimData.level === 'Hoch' ? 'level-high' : 
-                                      dimData.level === 'Mittel' ? 'level-medium' : 'level-low';
-                    
-                    card.innerHTML = `
-                        <div class="dimension-header">
-                            <div class="dimension-name">${dimName}</div>
-                            <div class="dimension-score">${dimData.score.toFixed(1)}</div>
-                        </div>
-                        <div class="dimension-level ${levelClass}">${dimData.level}</div>
-                        <div class="dimension-progress">
-                            <div class="dimension-progress-fill" data-width="${dimData.score}%" style="width: 0%"></div>
-                        </div>
-                        <p class="dimension-interpretation">${dimData.interpretation}</p>
-                    `;
-                    
-                    dimensionsContainer.appendChild(card);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('results-content').style.display = 'block';
+
+                if (results.recommendation) {
+                    document.getElementById('summary-text').textContent = results.recommendation;
                 }
-                
-                // Animate dimension progress bars
-                animateDimensionBars();
-                
-                // Generate and display key insights
-                const keyInsights = generateKeyInsights(results.dimensions, overallScore);
-                document.getElementById('key-insights').textContent = keyInsights;
-                
-                // Display recommendations
-                const recommendationsContainer = document.getElementById('recommendations-container');
-                recommendationsContainer.innerHTML = '';
-                
-                results.recommendations.forEach((rec, index) => {
-                    const li = document.createElement('li');
-                    li.className = 'recommendation-item';
-                    li.innerHTML = `
-                        <div class="recommendation-icon">✓</div>
-                        <div class="recommendation-text">${rec}</div>
-                    `;
-                    recommendationsContainer.appendChild(li);
+
+                const container = document.getElementById('dimensions-container');
+                const scores = results.scores;
+
+                const dimensionOrder = [
+                    'innovativeness',
+                    'risk_taking',
+                    'achievement_orientation',
+                    'autonomy_orientation',
+                    'proactiveness',
+                    'locus_of_control',
+                    'self_efficacy'
+                ];
+
+                dimensionOrder.forEach(dimensionKey => {
+                    if (scores[dimensionKey]) {
+                        const score = scores[dimensionKey];
+                        const info = dimensionInfo[dimensionKey];
+                        
+                        const card = document.createElement('div');
+                        card.className = 'dimension-card';
+                        
+                        const percentile = score.percentile || 0;
+                        const interpretation = score.interpretation || 'Mittel';
+                        
+                        card.innerHTML = `
+                            <div class="dimension-label">${info.name}</div>
+                            <div class="dimension-header">
+                                <div class="dimension-name">${info.nameDe}</div>
+                                <div>
+                                    <span class="dimension-score">${percentile}%</span>
+                                    <span class="score-interpretation ${getInterpretationClass(interpretation)}">
+                                        ${interpretation}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: ${percentile}%">
+                                    <span class="progress-bar-text">${percentile}. Perzentil</span>
+                                </div>
+                            </div>
+                            <div class="dimension-description">
+                                ${info.description}
+                            </div>
+                        `;
+                        
+                        container.appendChild(card);
+                    }
                 });
-                
-                // Display next steps
-                const stepsContainer = document.getElementById('steps-container');
-                stepsContainer.innerHTML = '';
-                
-                results.next_steps.forEach(step => {
-                    const li = document.createElement('li');
-                    li.className = 'step-item';
-                    li.textContent = step;
-                    stepsContainer.appendChild(li);
-                });
-                
+
+                setTimeout(() => {
+                    document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+                        bar.style.width = bar.getAttribute('style').match(/width:\s*(\d+)%/)[1] + '%';
+                    });
+                }, 100);
+
             } catch (error) {
-                console.error('Error displaying results:', error);
-                alert('Fehler beim Anzeigen der Ergebnisse. Bitte versuchen Sie es erneut.');
+                console.error('Error loading results:', error);
+                alert('Fehler beim Laden der Ergebnisse. Bitte versuchen Sie es erneut.');
+                window.location.href = 'assessment.html';
             }
         }
-        
-        // Display results on page load
-        displayResults();
+
+        window.addEventListener('DOMContentLoaded', loadResults);
     </script>
 </body>
 </html>
