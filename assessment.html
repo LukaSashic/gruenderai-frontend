@@ -361,7 +361,7 @@
                 nextBtn.disabled = true;
                 nextBtn.textContent = 'Laden...';
                 
-                const response = await fetch(`${API_BASE_URL}/api/assessment/answer`, {
+                const response = await fetch(`${API_BASE_URL}/assessment/answer`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -411,7 +411,7 @@
         // Get results and redirect
         async function getResults() {
             try {
-                const response = await fetch(`${API_BASE_URL}/api/assessment/results`, {
+                const response = await fetch(`${API_BASE_URL}/assessment/results`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
