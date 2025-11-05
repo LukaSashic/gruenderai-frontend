@@ -411,8 +411,8 @@
         // Get results and redirect
         async function getResults() {
             try {
-                const response = await fetch(`${API_BASE_URL}/assessment/results`, {
-                    method: 'POST',
+                const response = await fetch(`${API_BASE_URL}/assessment/results/${sessionId}`, {
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     },
